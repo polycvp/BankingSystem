@@ -6,10 +6,13 @@
 
 package control;
 
+import entity.ClientDTO;
+
 /**
  *
  * @author Paul
  */
-public interface IController {
-    
+public interface IController 
+{
+    public ClientDTO withdraw(String accountNumber, float amount, String clientNumber);
 }

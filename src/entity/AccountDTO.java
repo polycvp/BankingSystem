@@ -10,6 +10,13 @@ package entity;
  *
  * @author Paul
  */
-public class AccountDTO {
+public class AccountDTO 
+{
+    private String accountNumber;
+    private float balance;
     
+    public AccountDTO()
+    {
+        
+    }
 }

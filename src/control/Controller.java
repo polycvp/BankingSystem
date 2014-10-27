@@ -6,10 +6,22 @@
 
 package control;
 
+import entity.ClientDTO;
+
 /**
  *
  * @author Paul
  */
-public class Controller {
+public class Controller implements IController
+{
+    public Controller()
+    {
+        
+    }
+
+    @Override
+    public ClientDTO withdraw(String accountNumber, float amount, String clientNumber) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -10,6 +10,29 @@ package entity;
  *
  * @author Paul
  */
-public class ClientDTO {
+public class ClientDTO 
+{
+    private String name;
+    private String clientNumber;
+    private AccountDTO account;
     
+    public ClientDTO()
+    {
+        
+    }
+    
+    public void setBalance(float amount)
+    {
+        
+    }
+    
+    public AccountDTO getAccount()
+    {
+        return account;
+    }
+    
+    public void addAccount(AccountDTO aDTO)
+    {
+        
+    }
 }

@@ -6,10 +6,21 @@
 
 package control;
 
+import entity.ClientDTO;
+
 /**
  *
  * @author Paul
  */
-public class WithdrawManager {
+public class WithdrawManager 
+{
+    public WithdrawManager()
+    {
+        
+    }
     
+    public ClientDTO withdraw(String accountNumber, float amount, String clientNumber)
+    {
+        return null;
+    }
 }
