@@ -22,7 +22,7 @@ public class DataStorage {
     
     public void withdraw(String accountNumber,float amount,String clientNumber) {
         //bsApi.withdraw(findClient(clientNumber));
-        bsApi.withdraw(findClient(clientNumber), amount);
+        bsApi.withdraw(accountNumber, amount, clientNumber);
     }
     
     public ClientDTO findClient(String clientNumber) {

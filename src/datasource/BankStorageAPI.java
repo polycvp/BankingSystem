@@ -6,6 +6,7 @@
 
 package datasource;
 
+import entity.AccountDTO;
 import entity.ClientDTO;
 import java.io.File;
 
@@ -19,8 +20,8 @@ public class BankStorageAPI implements IBankStorageAPI {
     
     //what does the withdraw method do here because you do not have an ammount
     @Override
-    public void withdraw(ClientDTO c, float amount) {
-        ClientDTO cDTO = fh.readClientFromFile(c.getClientNumber());
+    public void withdraw(String clientNumber, float amount, String accountNumber) {
+        ClientDTO cDTO = fh.readClientFromFile(clientNumber);
         float balance = cDTO.getAccount().getBalance();
         balance = balance - amount;
         cDTO.setBalance(balance);
@@ -29,13 +30,7 @@ public class BankStorageAPI implements IBankStorageAPI {
 
     @Override
     public ClientDTO findClient(String clientNumber) {
-        fh.readClientFromFile(new File(clientNumber));
-        return new ClientDTO();
-    }
-
-    @Override
-    public void withdraw(ClientDTO c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return fh.readClientFromFile(clientNumber);
     }
     
 }

@@ -13,7 +13,6 @@ import entity.ClientDTO;
  * @author Paul
  */
 public interface IBankStorageAPI {
-    public void withdraw(ClientDTO c);
-    public void withdraw(ClientDTO c,float amount);
+    public void withdraw(String accountNumber,float amount,String clientNumber);
     public ClientDTO findClient(String clientNumber);
 }

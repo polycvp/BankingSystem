@@ -6,6 +6,7 @@
 
 package control;
 
+import datasource.DatasourceFacade;
 import entity.ClientDTO;
 
 /**
@@ -14,13 +15,19 @@ import entity.ClientDTO;
  */
 public class WithdrawManager 
 {
+    private DatasourceFacade df;
+    
     public WithdrawManager()
     {
-        
+        df = new DatasourceFacade();
     }
     
     public ClientDTO withdraw(String accountNumber, float amount, String clientNumber)
     {
-        return null;
+        ClientDTO cDTO = df.findClient(clientNumber);
+        //check balance here
+        if (cDTO.getAccount().getBalance()>=-999)
+            df.withdraw(accountNumber, amount, cDTO.getClientNumber());
+       return cDTO;
     }
 }

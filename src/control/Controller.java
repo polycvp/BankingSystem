@@ -14,14 +14,16 @@ import entity.ClientDTO;
  */
 public class Controller implements IController
 {
+    private WithdrawManager wm;
+    
     public Controller()
     {
-        
+        wm = new WithdrawManager();
     }
 
     @Override
     public ClientDTO withdraw(String accountNumber, float amount, String clientNumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return wm.withdraw(accountNumber, amount, clientNumber);
     }
     
 }
