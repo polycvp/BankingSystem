@@ -9,29 +9,71 @@ package datasource;
 import entity.AccountDTO;
 import entity.ClientDTO;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Paul
  */
 public class FileHandler {
+    //FileHandler or BankStorageAPI should have a reference to a single file
+    
+    //it should return a client not a file
     public File readClientFromFile(File f) {
-        return f;
+        FileReader fr = null;
+        try {
+            fr = new FileReader(f);
+            return f;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FileHandler.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } finally {
+            try {
+                fr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(FileHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
+    //it should return an account not a file
     public File readAccountFromFile(File f) {
-        return f;
+         FileReader fr = null;
+        try {
+            fr = new FileReader(f);
+            return f;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FileHandler.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } finally {
+            try {
+                fr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(FileHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     //ambiguity in naming in the Client - ClientDTO
+    //and no dependency to the client DTO
+    //how does this method write the client without a file passed to it
     public void writeClient(ClientDTO client) {
-        
+        try {
+            FileWriter fw = new FileWriter(this.createFile());
+        } catch (IOException ex) {
+            Logger.getLogger(FileHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     //same as above
     public void writeAccount(AccountDTO account) {
         
     }
-    //name missing
-    public File createFile() {
-        return new File("name");
+    //name and path for the file are missing as 
+    private File createFile() {
+        return new File("BankSystem");
     }
 }
