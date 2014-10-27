@@ -21,7 +21,7 @@ public class DataStorage {
     }
     
     public void withdraw(String accountNumber,float amount,String clientNumber) {
-        
+        bsApi.withdraw(findClient(clientNumber));
     }
     
     public ClientDTO findClient(String clientNumber) {
