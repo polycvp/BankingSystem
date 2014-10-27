@@ -41,4 +41,21 @@ public class ClientDTO
     {
         this.account = aDTO;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getClientNumber() {
+        return clientNumber;
+    }
+
+    public void setClientNumber(String clientNumber) {
+        this.clientNumber = clientNumber;
+    }
+    
 }

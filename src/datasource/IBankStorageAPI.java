@@ -14,5 +14,6 @@ import entity.ClientDTO;
  */
 public interface IBankStorageAPI {
     public void withdraw(ClientDTO c);
+    public void withdraw(ClientDTO c,float amount);
     public ClientDTO findClient(String clientNumber);
 }
