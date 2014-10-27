@@ -16,6 +16,10 @@ public class ClientDTO
     private String clientNumber;
     private AccountDTO account;
     
+    public ClientDTO() {
+        
+    }
+    
     public ClientDTO(String name, String clientNumber, AccountDTO account)
     {
         this.name = name;

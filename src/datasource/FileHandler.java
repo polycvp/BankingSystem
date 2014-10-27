@@ -22,8 +22,13 @@ import java.util.logging.Logger;
  */
 public class FileHandler {
     //FileHandler or BankStorageAPI should have a reference to a single file
+    private File homeFile;
     
-    //it should return a client not a file
+    public FileHandler() {
+        homeFile = this.createFile();
+    }
+    
+    //it should return a client not a file and it should recieve the identifier of the client
     public File readClientFromFile(File f) {
         FileReader fr = null;
         try {
@@ -41,7 +46,7 @@ public class FileHandler {
         }
     }
     
-    //it should return an account not a file
+    //it should return an account not a file and it should recieve the identifier of the account
     public File readAccountFromFile(File f) {
          FileReader fr = null;
         try {
@@ -58,6 +63,7 @@ public class FileHandler {
             }
         }
     }
+    
     //ambiguity in naming in the Client - ClientDTO
     //and no dependency to the client DTO
     //how does this method write the client without a file passed to it
@@ -70,7 +76,11 @@ public class FileHandler {
     }
     //same as above
     public void writeAccount(AccountDTO account) {
-        
+         try {
+            FileWriter fw = new FileWriter(this.createFile());
+        } catch (IOException ex) {
+            Logger.getLogger(FileHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     //name and path for the file are missing as 
     private File createFile() {

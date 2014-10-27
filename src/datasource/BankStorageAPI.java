@@ -7,6 +7,7 @@
 package datasource;
 
 import entity.ClientDTO;
+import java.io.File;
 
 /**
  *
@@ -14,6 +15,8 @@ import entity.ClientDTO;
  */
 public class BankStorageAPI implements IBankStorageAPI {
 
+    private FileHandler fh = new FileHandler();
+    
     @Override
     public void withdraw(ClientDTO c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -21,7 +24,8 @@ public class BankStorageAPI implements IBankStorageAPI {
 
     @Override
     public ClientDTO findClient(String clientNumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        fh.readClientFromFile(new File(clientNumber));
+        return new ClientDTO();
     }
     
 }

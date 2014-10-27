@@ -15,6 +15,10 @@ public class AccountDTO
     private String accountNumber;
     private float balance;
     
+    public AccountDTO() {
+        
+    }
+    
     public AccountDTO(String accountNumber, float balance)
     {
         this.accountNumber = accountNumber;
