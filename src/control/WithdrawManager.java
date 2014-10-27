@@ -7,6 +7,7 @@
 package control;
 
 import datasource.DatasourceFacade;
+import entity.AccountDTO;
 import entity.ClientDTO;
 
 /**
@@ -25,9 +26,14 @@ public class WithdrawManager
     public ClientDTO withdraw(String accountNumber, float amount, String clientNumber)
     {
         ClientDTO cDTO = df.findClient(clientNumber);
+        AccountDTO aDTO = null;
         //check balance here
-        if (cDTO.getAccount().getBalance()>=-999)
+        if (cDTO.getAccount().getBalance()>=-999) {
             df.withdraw(accountNumber, amount, cDTO.getClientNumber());
+            //this should be done and updated in the file handler
+            aDTO = cDTO.getAccount();
+            aDTO.setBalance(amount);
+        }
        return cDTO;
     }
 }

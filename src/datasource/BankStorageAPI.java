@@ -32,5 +32,10 @@ public class BankStorageAPI implements IBankStorageAPI {
     public ClientDTO findClient(String clientNumber) {
         return fh.readClientFromFile(clientNumber);
     }
+
+    @Override
+    public void withdraw(ClientDTO cDTO) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

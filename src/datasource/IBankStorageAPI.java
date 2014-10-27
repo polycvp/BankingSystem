@@ -13,6 +13,7 @@ import entity.ClientDTO;
  * @author Paul
  */
 public interface IBankStorageAPI {
-    public void withdraw(String accountNumber,float amount,String clientNumber);
+    public void withdraw(String accountNumber,float amount,String clientNumber); //made acording to the DSD
+    public void withdraw(ClientDTO cDTO); //irrelevant method according to DCD
     public ClientDTO findClient(String clientNumber);
 }

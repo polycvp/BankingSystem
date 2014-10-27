@@ -25,6 +25,8 @@ import java.util.logging.Logger;
 public class FileHandler {
 
     //FileHandler or BankStorageAPI should have a reference to a single file
+    
+    //clientNumber;name;accountNumber;balance
 
     private File homeFile;
 
