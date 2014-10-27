@@ -12,16 +12,30 @@ import entity.ClientDTO;
  *
  * @author Paul
  */
-public class DatasourceFacade implements IDatasourceFacade {
-
-    @Override
-    public void withdraw(String accountNumber, float amount, String clientNumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+public class DatasourceFacade implements IDatasourceFacade 
+{
+    private DataStorage data;
+    
+    public DatasourceFacade()
+    {
+    
+    }
+    
+    public DatasourceFacade(DataStorage data)
+    {
+        this.data = data;
     }
 
     @Override
-    public ClientDTO findClient(String clientNumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void withdraw(String accountNumber, float amount, String clientNumber) 
+    {
+        data.withdraw(accountNumber, amount, clientNumber);
+    }
+
+    @Override
+    public ClientDTO findClient(String clientNumber) 
+    {
+        return data.findClient(clientNumber);
     }
     
 }
