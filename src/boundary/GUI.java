@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package boundary;
+
+import control.Controller;
+import control.IController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,11 +15,15 @@ package boundary;
  */
 public class GUI extends javax.swing.JFrame {
 
+    private IController c;
+
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+
+        c = new Controller();
     }
 
     /**
@@ -28,21 +35,114 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelClientNumber = new javax.swing.JLabel();
+        jLabelAmount = new javax.swing.JLabel();
+        jTextFieldClientNumber = new javax.swing.JTextField();
+        jTextFieldAmount = new javax.swing.JTextField();
+        jButtonWithdraw = new javax.swing.JButton();
+        jLabelMessage = new javax.swing.JLabel();
+        jLabelMessageResult = new javax.swing.JLabel();
+        jLabelAccountNumber = new javax.swing.JLabel();
+        jTextFieldAccountNumber = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jLabelClientNumber.setText("Client Number");
+
+        jLabelAmount.setText("Amount");
+
+        jButtonWithdraw.setText("Withdraw");
+        jButtonWithdraw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonWithdrawActionPerformed(evt);
+            }
+        });
+
+        jLabelMessage.setText("Message: ");
+
+        jLabelMessageResult.setText("..... aaand it's gone");
+
+        jLabelAccountNumber.setText("Account Number");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonWithdraw)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelClientNumber)
+                            .addComponent(jLabelAmount))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelMessage)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelMessageResult)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTextFieldAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTextFieldClientNumber)
+                                        .addGap(294, 294, 294))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelAccountNumber)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(294, 294, 294))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientNumber)
+                    .addComponent(jTextFieldClientNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAccountNumber)
+                    .addComponent(jTextFieldAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAmount))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelMessage)
+                    .addComponent(jLabelMessageResult))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(jButtonWithdraw)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWithdrawActionPerformed
+
+        try {
+            int clientNumber = Integer.parseInt(jTextFieldClientNumber.getText());
+            int accountNumber = Integer.parseInt(jTextFieldAccountNumber.getText());
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Error parsing numbers!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+        c.withdraw(null, TOP_ALIGNMENT, null);
+    }//GEN-LAST:event_jButtonWithdrawActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +180,14 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonWithdraw;
+    private javax.swing.JLabel jLabelAccountNumber;
+    private javax.swing.JLabel jLabelAmount;
+    private javax.swing.JLabel jLabelClientNumber;
+    private javax.swing.JLabel jLabelMessage;
+    private javax.swing.JLabel jLabelMessageResult;
+    private javax.swing.JTextField jTextFieldAccountNumber;
+    private javax.swing.JTextField jTextFieldAmount;
+    private javax.swing.JTextField jTextFieldClientNumber;
     // End of variables declaration//GEN-END:variables
 }
