@@ -7,6 +7,7 @@ package boundary;
 
 import control.Controller;
 import control.IController;
+import entity.ClientDTO;
 import javax.swing.JOptionPane;
 
 /**
@@ -131,17 +132,25 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButtonWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWithdrawActionPerformed
 
+        float amount = 0;
         try {
-            int clientNumber = Integer.parseInt(jTextFieldClientNumber.getText());
-            int accountNumber = Integer.parseInt(jTextFieldAccountNumber.getText());
+            amount = Float.parseFloat(jTextFieldAmount.getText());
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this,
-                    "Error parsing numbers!",
+                    "Error parsing amount!",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
 
-        c.withdraw(null, TOP_ALIGNMENT, null);
+        if (amount <= 1000F && amount > 0) {
+            ClientDTO withdraw = c.withdraw(jTextFieldAccountNumber.getText(), amount, jTextFieldClientNumber.getText());
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Invalid withdrawl amount!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButtonWithdrawActionPerformed
 
     /**
