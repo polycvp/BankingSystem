@@ -6,10 +6,26 @@
 
 package datasource;
 
+import entity.ClientDTO;
+
 /**
  *
  * @author Paul
  */
 public class DataStorage {
+    
+    private IBankStorageAPI bsApi;
+    
+    public DataStorage(IBankStorageAPI b_api) {
+        bsApi = b_api;
+    }
+    
+    public void withdraw(String accountNumber,float amount,String clientNumber) {
+        
+    }
+    
+    public ClientDTO findClient(String clientNumber) {
+        return bsApi.findClient(clientNumber);
+    }
     
 }

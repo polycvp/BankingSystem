@@ -6,10 +6,13 @@
 
 package datasource;
 
+import entity.ClientDTO;
+
 /**
  *
  * @author Paul
  */
 public interface IBankStorageAPI {
-    
+    public void withdraw(ClientDTO c);
+    public ClientDTO findClient(String clientNumber);
 }

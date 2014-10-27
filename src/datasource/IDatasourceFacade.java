@@ -6,10 +6,13 @@
 
 package datasource;
 
+import entity.ClientDTO;
+
 /**
  *
  * @author Paul
  */
 public interface IDatasourceFacade {
-    
+    public void withdraw(String accountNumber,float amount,String clientNumber);
+    public ClientDTO findClient(String clientNumber);
 }
