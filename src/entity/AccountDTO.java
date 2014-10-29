@@ -3,24 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entity;
+
+import java.io.Serializable;
 
 /**
  *
  * @author Paul
  */
-public class AccountDTO 
-{
+public class AccountDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String accountNumber;
     private float balance;
-    
+
     public AccountDTO() {
-        
+
     }
-    
-    public AccountDTO(String accountNumber, float balance)
-    {
+
+    public AccountDTO(String accountNumber, float balance) {
         this.accountNumber = accountNumber;
         this.balance = balance;
     }
@@ -40,6 +42,5 @@ public class AccountDTO
     public void setBalance(float balance) {
         this.balance = balance;
     }
-    
-    
+
 }

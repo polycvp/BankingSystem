@@ -3,42 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entity;
+
+import java.io.Serializable;
 
 /**
  *
  * @author Paul
  */
-public class ClientDTO 
-{
+public class ClientDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String name;
     private String clientNumber;
     private AccountDTO account;
-    
+
     public ClientDTO() {
-        
+
     }
-    
-    public ClientDTO(String name, String clientNumber, AccountDTO account)
-    {
+
+    public ClientDTO(String name, String clientNumber, AccountDTO account) {
         this.name = name;
         this.clientNumber = clientNumber;
         this.account = account;
     }
-    
-    public void setBalance(float amount)
-    {
+
+    public void setBalance(float amount) {
         account.setBalance(amount);
     }
-    
-    public AccountDTO getAccount()
-    {
+
+    public AccountDTO getAccount() {
         return account;
     }
-    
-    public void addAccount(AccountDTO aDTO)
-    {
+
+    public void addAccount(AccountDTO aDTO) {
         this.account = aDTO;
     }
 
@@ -57,5 +56,5 @@ public class ClientDTO
     public void setClientNumber(String clientNumber) {
         this.clientNumber = clientNumber;
     }
-    
+
 }
