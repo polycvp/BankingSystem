@@ -14,9 +14,12 @@ import entity.ClientDTO;
  */
 public class DataStorage {
     
-    private IBankStorageAPI bsApi;
+    private IDatasourceFacade bsApi = new DatasourceFacade();
     
-    public DataStorage(IBankStorageAPI b_api) {
+    public DataStorage() {
+    }
+    
+    public DataStorage(IDatasourceFacade b_api) {
         bsApi = b_api;
     }
     

@@ -62,8 +62,6 @@ public class GUI extends javax.swing.JFrame {
 
         jLabelMessage.setText("Message: ");
 
-        jLabelMessageResult.setText("..... aaand it's gone");
-
         jLabelAccountNumber.setText("Account Number");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,16 +139,28 @@ public class GUI extends javax.swing.JFrame {
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-
         if (amount <= 1000F && amount > 0) {
-            ClientDTO withdraw = c.withdraw(jTextFieldAccountNumber.getText(), amount, jTextFieldClientNumber.getText());
+
+            ClientDTO withdraw = null;
+            try {
+                withdraw = c.withdraw(jTextFieldAccountNumber.getText(), amount, jTextFieldClientNumber.getText());
+                if (withdraw != null) {
+                    this.jLabelMessageResult.setText("Amount withdrawn. New balance: " + withdraw.getAccount().getBalance());
+                } else {
+                    this.jLabelMessageResult.setText("Transaction refused. Balance too low. ");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,
+                        "Client not found!",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             JOptionPane.showMessageDialog(this,
                     "Invalid withdrawl amount!",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_jButtonWithdrawActionPerformed
 
     /**

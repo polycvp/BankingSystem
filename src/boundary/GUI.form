@@ -129,9 +129,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelMessageResult">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="..... aaand it&apos;s gone"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelAccountNumber">
       <Properties>

@@ -6,6 +6,7 @@
 
 package control;
 
+import datasource.DatasourceFacade;
 import entity.ClientDTO;
 
 /**
@@ -14,16 +15,20 @@ import entity.ClientDTO;
  */
 public class Controller implements IController
 {
-    private WithdrawManager wm;
+    //private WithdrawManager wm;
+    private DatasourceFacade bsa;
     
     public Controller()
     {
-        wm = new WithdrawManager();
+        //wm = new WithdrawManager();
+        bsa = new DatasourceFacade();
     }
 
     @Override
     public ClientDTO withdraw(String accountNumber, float amount, String clientNumber) {
-        return wm.withdraw(accountNumber, amount, clientNumber);
+        ClientDTO cDTO = bsa.findClient(clientNumber);
+        return bsa.withdraw(cDTO,amount);
+        //wm.withdraw(accountNumber, amount, clientNumber);
     }
     
 }

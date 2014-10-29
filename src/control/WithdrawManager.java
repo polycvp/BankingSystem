@@ -6,7 +6,7 @@
 
 package control;
 
-import datasource.DatasourceFacade;
+import datasource.BankStorageAPI;
 import entity.AccountDTO;
 import entity.ClientDTO;
 
@@ -16,11 +16,10 @@ import entity.ClientDTO;
  */
 public class WithdrawManager 
 {
-    private DatasourceFacade df;
+    private BankStorageAPI df= new BankStorageAPI();
     
     public WithdrawManager()
     {
-        df = new DatasourceFacade();
     }
     
     public ClientDTO withdraw(String accountNumber, float amount, String clientNumber)
@@ -32,7 +31,8 @@ public class WithdrawManager
             df.withdraw(accountNumber, amount, cDTO.getClientNumber());
             //this should be done and updated in the file handler
             aDTO = cDTO.getAccount();
-            aDTO.setBalance(amount);
+            aDTO.setBalance(aDTO.getBalance()-amount);
+            cDTO.setBalance(aDTO.getBalance());
         }
        return cDTO;
     }
